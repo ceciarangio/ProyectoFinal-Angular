@@ -5,9 +5,10 @@
     <a routerLink=""><img class="c-header__nav--img" src="../assets/logoOk.jpg"></a>
   <a class="c-header__nav--a" routerLink="/products-list"><img class="c-header__nav--img" src="../assets/PRODUCTLIST.jpg"></a>
 
-  <a *ngIf="isLoggedIn()" class="c-header__nav--a" routerLink="/users/1">Ver Usuario</a>
-  <a *ngIf="!isLoggedIn()" routerLink="/login"><img class="c-header__nav--img" src="../assets/INICIAR.jpg"></a>
   <a routerLink="/users"><img class="c-header__nav--img" src="../assets/USER.jpg"></a>
+  <a class="c-header__nav--a" *ngIf="isLoggedIn()"  [routerLink]="'/users/' + getUserId()">Ver Perfil</a>
+  <a *ngIf="!isLoggedIn()" routerLink="/login"><img class="c-header__nav--img" src="../assets/INICIAR.jpg"></a>
+
 
   <button *ngIf="isLoggedIn()" (click)="logout()">Cerrar sesión</button>
   <a *ngIf="!isLoggedIn()"  routerLink="/register" ><img class="c-header__nav--img" src="../assets/REGISTER.jpg"></a>
@@ -16,7 +17,7 @@
   </nav>
   </header>
 
-  <main class="c-main" [ngClass]="{ 'c-no-background': currentRoute === '/products-list' ,'c-no-background2': currentRoute.startsWith('/users/'), 'c-no-background3': currentRoute === '/register'}">
+  <main class="c-main" [ngClass]="{ 'c-no-background': currentRoute === '/products-list', 'c-no-background4': currentRoute === '/add-product' ,'c-no-background2': currentRoute.startsWith('/users/'), 'c-no-background3': currentRoute === '/register'}">
     <router-outlet></router-outlet>
     </main>
 

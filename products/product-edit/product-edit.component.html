@@ -1,28 +1,30 @@
-<form [formGroup]="productForm" (ngSubmit)="save()">
 
-  <div class="form-group">
-    <label for="title"> Nombre del producto: </label>
-    <input type="text" id="title" formControlName="title" class="form-control" required>
+
+<form class="form" [formGroup]="productForm" (ngSubmit)="save()">
+<h2>Agregar nuevo producto</h2>
+  <div class="form__group">
+    <label for="title" class="form__label"> Nombre del producto: </label>
+    <input type="text" id="title" formControlName="title" class="form__input" required>
     <div *ngIf="productForm.get('title')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
     <div *ngIf="productForm.get('title')?.hasError('minLenght')" class="text-danger">El nombre debe tener un mínimo de 6 caracteres</div>
   </div>
 
-  <div class="form-group">
-    <label for="description">Descripción: </label>
-    <textarea type="text" id="description" formControlName="description" class="form-control"></textarea>
+  <div class="form__group">
+    <label for="description" class="form__label">Descripción: </label>
+    <textarea type="text" id="description" formControlName="description" class="form__textarea"></textarea>
     <div *ngIf="productForm.get('description')?.hasError('maxLenght')" class="text-danger">La descripción no puede tener más de 600 caracteres</div>
     <div *ngIf="productForm.get('description')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
   </div>
 
-  <div class="form-group">
-    <label for="price">Precio: </label>
-    <input type="number" id="price" formControlName="price" class="form-control">
+  <div class="form__group">
+    <label for="price" class="form__label">Precio: </label>
+    <input type="number" id="price" formControlName="price" class="form__input">
     <div *ngIf="productForm.get('price')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
   </div>
 
-  <div class="form-group">
-    <label for="category">Categoria: </label>
-    <select name="category" id="category" formControlName="category">
+  <div class="form__group">
+    <label for="category" class="form__label">Categoria: </label>
+    <select name="category" id="category" formControlName="category" class="form__select">
       <option value="electronics">Electrónica</option>
       <option value="jewelery">Joyería</option>
       <option value="men's clothing">Ropa de Hombre</option>
@@ -31,13 +33,12 @@
     <div *ngIf="productForm.get('category')?.hasError('required')" class="text-danger">Selecciona una categoría</div>
   </div>
 
-  <div class="form-group">
-    <label for="image">URL de la imagen: </label>
-    <input type="text" id="image" formControlName="image" class="form-control">
+  <div class="form__group">
+    <label for="image" class="form__label">URL de la imagen: </label>
+    <input type="text" id="image" formControlName="image" class="form__input">
     <div *ngIf="productForm.get('image')?.hasError('image')" class="text-danger">Este campo es obligatorio</div>
   </div>
 
-  <button>Añadir</button>
+  <button type="submit" class="form__button">Añadir</button>
 
 </form>
-

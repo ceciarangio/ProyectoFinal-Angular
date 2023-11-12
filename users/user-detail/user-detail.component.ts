@@ -1,72 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { UserI } from 'src/app/products/models/user';
-import { UsersService } from '../users.service';
 import { ActivatedRoute, Route } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
+import { UsersService } from '../users.service';
+import { UserI } from 'src/app/products/models/user';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit {
-
-  users: UserI[] = [];
-
-  constructor( private userService: UsersService, private route: ActivatedRoute, private appComponent: AppComponent) {}
+export class UserDetailComponent implements OnInit{
 
   botonActualizar: boolean = false;
   toggleButton(){
-    this.botonActualizar =!this.botonActualizar;
+    this.botonActualizar = !this.botonActualizar;
   }
 
   updateUser: UserI = {
-    address:  {
-      geolocation:  {
-      lat: 0,
-      long: 0
+    address:{
+      geolocation: {
+        lat: 0,
+        long: 0
       },
-      city: '',
-      street: '',
+      city: "",
+      street: "",
       number: 0,
       zipcode: 0
-      },
-      id: 0,
-      email: '',
-      username: '',
-      password: '',
-      name: {
-      firstname: '',
-      lastname: ''
-      },
-      phone: 0,
-      __v: 0
-
-  }
+    },
+    id: 0,
+    email: "",
+    username: "",
+    password: "",
+    name: {
+      firstname:"",
+      lastname: ""
+    },
+    phone: 0,
+    __v: 0
+  };
 
   userId: number = 0;
+
+
+  constructor(private usersService: UsersService, private route: ActivatedRoute){}
 
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const userId = +params['id'];
-      this.userService.getUserById(userId).subscribe(user => {
-        this.updateUser = user;
-      });
-    });
+      this.usersService.getUserById(userId).subscribe(user => {
+        user.address.geolocation.lat = +user.address.geolocation.lat;
+        user.address.geolocation.long = +user.address.geolocation.long;
+        this.updateUser = user
+      })
+    })
   }
 
-
-  getUserToUpdate(userId: number): void {
-    this.userService.getUserById(userId).subscribe((user: UserI) => {
+  getUserToUpdate(userId: number): void{
+    this.usersService.getUserById(userId).subscribe((user: UserI) => {
+      user.address.geolocation.lat = +user.address.geolocation.lat;
+      user.address.geolocation.long = +user.address.geolocation.long;
       this.updateUser = user;
-    });
+    })
   }
 
-  updateUserDetails() {
-    this.userService.updateUser(this.updateUser).subscribe(updatedUser => {
-      console.log('Usuario actualizado:', updatedUser);
-      // Actualizar la interfaz o realizar otras acciones
-    });
+  updateUserDetails(): void {
+    this.usersService.updateUser(this.updateUser).subscribe((e: UserI) => {
+      console.log("Tus datos han sido modificados: ", e);
+    })
   }
-  }
+}
