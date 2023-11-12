@@ -1,0 +1,59 @@
+<div>
+  <h2>Detalles del Producto</h2>
+  <p>ID: {{ selectedProduct.id }}</p>
+  <p>Título: {{ selectedProduct.title }}</p>
+  <p>Precio: {{ selectedProduct.price }}</p>
+  <p>Categoría: {{ selectedProduct.category }}</p>
+  <p>Descripción: {{ selectedProduct.description }}</p>
+  <img [src]="selectedProduct.image" alt="Imagen del producto">
+</div>
+
+
+<button *ngIf="!botonActualizar" (click)="toggleButton()">Editar producto</button>
+<button *ngIf="botonActualizar" (click)="toggleButton()">No Editar producto</button>
+
+<div *ngIf="botonActualizar">
+<form [formGroup]="productForm" (ngSubmit)="update()">
+
+  <div>
+    <label for="title">Título</label>
+    <input type="text" id="title" formControlName="title" required>
+    <div *ngIf="productForm.get('title')?.hasError('required')" >Este campo es obligatorio </div>
+    <div *ngIf="productForm.get('title')?.hasError('minLength')">El titulo debe tener al menos 5 caracteres</div>
+  </div>
+
+  <div>
+    <label for="price">Precio</label>
+    <input type="number" id="price" formControlName="price" required>
+    <div *ngIf="productForm.get('price')?.hasError('required')" >Este campo es obligatorio </div>
+  </div>
+
+  <div>
+    <label for="category">Categoria</label>
+    <select name="category" id="category" formControlName="category" required>
+      <option value="electronic">Electronica</option>
+      <option value="jewelery">Joyeria</option>
+      <option value="men's clothing">Ropa Hombre</option>
+      <option value="women's clothing">Ropa Mujer</option>
+
+    </select>
+    <div *ngIf="productForm.get('category')?.hasError('required')" >Este campo es obligatorio </div>
+  </div>
+
+  <div>
+    <label for="description">Descripcion</label>
+    <textarea type="text" id="description" formControlName="description" required></textarea>
+       <div *ngIf="productForm.get('category')?.hasError('required')" >Este campo es obligatorio </div>
+    <div *ngIf="productForm.get('description')?.hasError('maxLength')" >La descripcion no debe tener mas de 1000 caracteres </div>
+  </div>
+
+  <div>
+    <label for="image">Url de la foto</label>
+    <input type="text" id="image" formControlName="image" required>
+    <div *ngIf="productForm.get('image')?.hasError('required')" >Este campo es obligatorio </div>
+  </div>
+
+  <button type="submit">Guardar</button>
+
+  </form>
+</div>

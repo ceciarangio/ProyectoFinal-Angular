@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&family=Lato:wght@100&family=Pacifico&display=swap');
+
+.c-header{
+  width: 100%;
+  min-height: 10%;
+  background-color: #E9EEF6;
+
+  &__nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &--img{
+      width: 100px;
+      min-height: 3%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    &--a{
+      text-decoration: none;
+      padding: 20px;
+    }
+
+
+  }
+
+}
+
+main{
+  width: 100%;
+  min-height: 80%;
+  background-image: url('../assets/BIENVENIDO\ A\ MI\ TIENDA.png');
+}
+
+.c-footer{
+  width: 100%;
+  min-height: 10%;
+  background-color: #E9EEF6;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.c-no-background {
+  background-image: none;
+}
+
+.c-no-background2 {
+  background-image: none;
+}
+
+.c-no-background3 {
+  background-image: none;
+}

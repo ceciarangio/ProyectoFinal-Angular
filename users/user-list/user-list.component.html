@@ -1,0 +1,14 @@
+<!-- <div *ngFor="let user of users">
+  <p>{{ user.name.firstname }} {{ user.name.lastname }} - {{ user.username }}</p>
+</div> -->
+
+<div class="users-container">
+  <h1>Usuarios</h1>
+  <div *ngFor="let user of users" class="user-card">
+    <h2>{{ user.name.firstname  }} {{ user.name.lastname }} </h2>
+    <p>{{ user.email }}</p>
+    <p>{{ user.username }}</p>
+    <!-- Agrega más detalles del usuario si es necesario -->
+  </div>
+</div>
+

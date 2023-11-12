@@ -1,0 +1,24 @@
+ <!-- <div class="c-container">
+  <a routerLink="add-product">Agregar producto</a>
+<div class="" *ngFor="let  product of products">
+  <h2>Nombre: {{product.title}}</h2>
+ <a routerLink="/products-list/{{product.id}}" ><img class="c-container__div--img" [src]="product.image" alt={{product.title}}></a>
+
+  <h3>Precio: {{product.price}}</h3>
+  <button (click)="deleteProduct(product.id)">Eliminar producto</button>
+</div>
+</div> -->
+
+<div class="c-container">
+
+  <div class="c-card" *ngFor="let product of products">
+    <h2>Nombre: {{ product.title }}</h2>
+    <a [routerLink]="'/products-list/' + product.id">
+      <img [src]="product.image" [alt]="product.title">
+    </a>
+    <h3>Precio: {{ product.price }}</h3>
+    <button (click)="deleteProduct(product.id)">Eliminar producto</button>
+  </div>
+  <a class="a-button" routerLink="/add-product">Agregar producto</a>
+</div>
+

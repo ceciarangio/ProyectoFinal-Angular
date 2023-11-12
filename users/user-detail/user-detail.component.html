@@ -1,0 +1,84 @@
+
+<div class="div-flex">
+
+</div>
+
+
+<div class="card-container">
+  <h3>Nombre: {{updateUser.name.firstname}} </h3>
+  <h3>Apellidos: {{updateUser.name.lastname}}</h3>
+  <h4>Email: {{updateUser.email}}</h4>
+  <h4>Telefono: {{updateUser.phone}}</h4>
+  <h4>Dirección: {{updateUser.address.street}}, {{updateUser.address.number}}, {{updateUser.address.zipcode}}, {{updateUser.address.city}}</h4>
+
+  <button *ngIf="!botonActualizar" (click)="toggleButton()">Editar usuario</button>
+  <button *ngIf="botonActualizar" (click)="toggleButton()">No Editar usuario</button>
+</div>
+<div *ngIf="botonActualizar">
+
+
+<div class="c-form-container">
+  <form (ngSubmit)="updateUserDetails()" class="c-form">
+    <div class="c-form-group">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" [(ngModel)]="updateUser.username" name="username" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="updateUser.email" name="email" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" [(ngModel)]="updateUser.password" name="password" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" [(ngModel)]="updateUser.name.lastname" name="lastname" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="phone">Teléfono:</label>
+      <input type="tel" id="phone" [(ngModel)]="updateUser.phone" name="phone" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="id">ID:</label>
+      <input type="number" id="id" [(ngModel)]="updateUser.id" name="id" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="city">Ciudad:</label>
+      <input type="text" id="city" [(ngModel)]="updateUser.address.city" name="city" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="street">Calle:</label>
+      <input type="text" id="street" [(ngModel)]="updateUser.address.street" name="street" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="number">Número:</label>
+      <input type="number" id="number" [(ngModel)]="updateUser.address.number" name="number" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="zipcode">Código postal:</label>
+      <input type="number" id="zipcode" [(ngModel)]="updateUser.address.zipcode" name="zipcode" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="latitude">Latitud:</label>
+      <input type="number" id="latitude" [(ngModel)]="updateUser.address.geolocation.lat" name="latitude" />
+    </div>
+
+    <div class="c-form-group">
+      <label for="longitude">Longitud:</label>
+      <input type="number" id="longitude" [(ngModel)]="updateUser.address.geolocation.long" name="longitude" />
+    </div>
+
+    <button type="submit">Actualizar usuario</button>
+  </form>
+</div>

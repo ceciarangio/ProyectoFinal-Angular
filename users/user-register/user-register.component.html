@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="form">
+  <h2>Registro de nuevo usuario</h2>
+  <label class="form__label">
+    <p>Introduce tu nombre:</p>
+    <input type="text" [(ngModel)]="registerUser.name.firstname" name="firstname" required class="form__input">
+  </label>
+
+  <label class="form__label">
+    <p>Introduce tus apellidos:</p>
+    <input type="text" [(ngModel)]="registerUser.name.lastname" name="lastname" required class="form__input">
+  </label>
+
+  <label class="form__label">
+    <p>Introduce tu email:</p>
+    <input type="text" [(ngModel)]="registerUser.email" name="email" required class="form__input">
+  </label>
+
+  <label class="form__label">
+    <p>Usuario:</p>
+    <input type="text" [(ngModel)]="registerUser.username" name="username" required class="form__input">
+  </label>
+
+  <label class="form__label">
+    <p>Contraseña:</p>
+    <input type="password" [(ngModel)]="registerUser.password" name="password" required class="form__input">
+  </label>
+
+  <button type="submit" [disabled]="!registerForm.valid" class="form__button">Registrar</button>
+</form>

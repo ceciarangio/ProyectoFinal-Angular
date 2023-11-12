@@ -1,0 +1,43 @@
+<form [formGroup]="productForm" (ngSubmit)="save()">
+
+  <div class="form-group">
+    <label for="title"> Nombre del producto: </label>
+    <input type="text" id="title" formControlName="title" class="form-control" required>
+    <div *ngIf="productForm.get('title')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
+    <div *ngIf="productForm.get('title')?.hasError('minLenght')" class="text-danger">El nombre debe tener un mínimo de 6 caracteres</div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción: </label>
+    <textarea type="text" id="description" formControlName="description" class="form-control"></textarea>
+    <div *ngIf="productForm.get('description')?.hasError('maxLenght')" class="text-danger">La descripción no puede tener más de 600 caracteres</div>
+    <div *ngIf="productForm.get('description')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Precio: </label>
+    <input type="number" id="price" formControlName="price" class="form-control">
+    <div *ngIf="productForm.get('price')?.hasError('required')" class="text-danger">Este campo es obligatorio</div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Categoria: </label>
+    <select name="category" id="category" formControlName="category">
+      <option value="electronics">Electrónica</option>
+      <option value="jewelery">Joyería</option>
+      <option value="men's clothing">Ropa de Hombre</option>
+      <option value="women's clothing">Ropa de Mujer</option>
+    </select>
+    <div *ngIf="productForm.get('category')?.hasError('required')" class="text-danger">Selecciona una categoría</div>
+  </div>
+
+  <div class="form-group">
+    <label for="image">URL de la imagen: </label>
+    <input type="text" id="image" formControlName="image" class="form-control">
+    <div *ngIf="productForm.get('image')?.hasError('image')" class="text-danger">Este campo es obligatorio</div>
+  </div>
+
+  <button>Añadir</button>
+
+</form>
+
